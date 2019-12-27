@@ -8,7 +8,7 @@ public class Cache {
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
-        
+        socket.send()
     }
 
     public static void main(String[] args) {

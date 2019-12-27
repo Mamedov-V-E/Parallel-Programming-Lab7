@@ -24,4 +24,8 @@ public class ParseUtils {
         }
         return CommandType.INVALID;
     }
+
+    public static String buildConnectRequest (String port, int minKey, int maxKey) {
+        return "CONNECT" + port + minKey + maxKey;
+    }
 }
