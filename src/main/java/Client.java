@@ -17,8 +17,28 @@ public class Client {
         String commandName = words[0];
         if (commandName.toLowerCase().equals("get")) {
             if (words.length != 2) {
-                System.out.println("Wrong command");
+                System.out.println("Incorrect command format: GET id");
+            } else {
+                int id = Integer.parseInt(words[1]);
+                sendGetRequest(id);
             }
         }
+        if (commandName.toLowerCase().equals("push")) {
+            if (words.length != 3) {
+                System.out.println("Incorrect command format: PUSH id value");
+            } else {
+                int id = Integer.parseInt(words[1]);
+                int value = Integer.parseInt(words[2]);
+                sendPushRequest(id, value);
+            }
+        }
+    }
+
+    private static void sendGetRequest(int id) {
+        
+    }
+
+    private static void sendPushRequest(int id, int value) {
+
     }
 }
