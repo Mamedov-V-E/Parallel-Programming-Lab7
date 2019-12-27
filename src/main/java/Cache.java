@@ -3,8 +3,6 @@ import org.zeromq.ZMQ;
 
 
 public class Cache {
-    private static final String Client_ADDRESS = "tcp://localhost:";
-
     private static void sendNotifyRequest (ZMQ.Socket socket, ) {
 
     }
@@ -21,7 +19,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
-        dealer.connect(Pr);
+        dealer.connect(Proxi.DEALER_ADDRES);
     }
 
 }
