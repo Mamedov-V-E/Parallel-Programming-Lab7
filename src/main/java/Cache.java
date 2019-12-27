@@ -28,7 +28,7 @@ public class Cache {
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
         while (!Thread.currentThread().isInterrupted()) {
-            ZMsg msg = ZMsg.
+            ZMsg msg = ZMsg.recvMsg()
         }
 
     }
