@@ -18,9 +18,9 @@ public class Client {
     }
 
     private static void ExecuteCommand(String commandLine) {
-        String[] words = commandLine.split(" ");
-        String commandName = words[0];
-        if (commandName.toLowerCase().equals("get")) {
+//        String[] words = commandLine.split(" ");
+//        String commandName = words[0];
+        if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.GET) {
             if (words.length != 2) {
                 System.out.println("Incorrect command format: GET id");
             } else {
