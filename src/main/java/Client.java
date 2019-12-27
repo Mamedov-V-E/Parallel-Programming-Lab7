@@ -17,7 +17,7 @@ public class Client {
         String commandName = words[0];
         if (commandName.toLowerCase().equals("get")) {
             if (words.length != 2) {
-                System.out.println("");
+                System.out.println("Wrong command");
             }
         }
     }
