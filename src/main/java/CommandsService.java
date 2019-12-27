@@ -10,6 +10,6 @@ public class CommandsService {
     }
 
     public static getCommandType(String command) {
-        if()
+        if (GET_COMMAND_PATTERN.matcher(command))
     }
 }
