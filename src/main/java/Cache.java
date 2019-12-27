@@ -5,7 +5,9 @@ import org.zeromq.ZMQ;
 public class Cache {
     private static final String CACHE_ADDRESS = "tcp://localhost";
 
-    private static void sendNotif
+    private static void sendNotifyRequest (ZMQ.Socket socket, ) {
+
+    }
 
     public static void main(String[] args) {
         if (args.length != 3 ||
