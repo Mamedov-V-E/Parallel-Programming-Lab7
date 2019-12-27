@@ -29,7 +29,7 @@ public class Client {
             } else {
                 int id = Integer.parseInt(words[1]);
                 int value = Integer.parseInt(words[2]);
-                sendPushRequest(id, value);
+                sendPutRequest(id, value);
             }
         }
     }
@@ -38,7 +38,7 @@ public class Client {
 
     }
 
-    private static void sendPushRequest(int id, int value) {
+    private static void sendPutRequest(int id, int value) {
 
     }
 }
