@@ -7,5 +7,7 @@ public class Cache {
             System.exit(-1);
         }
 
+        int port = Integer.parseInt(args[0]);
+        
     }
 }
