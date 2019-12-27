@@ -5,9 +5,9 @@ public class Client {
 
     public static void main(String[] args) {
 
-        Scanner in = new java.util.Scanner();
+        Scanner sc = new java.util.Scanner(System.in);
         while (true) {
-
+            sc.
         }
     }
 }
