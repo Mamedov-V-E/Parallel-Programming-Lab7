@@ -4,7 +4,7 @@ import org.zeromq.ZMQ;
 
 public class Cache {
     private static void sendNotifyRequest (ZMQ.Socket socket, String port) {
-        socket.send(ParseUtils.buildNotifyRequest(port));
+        socket.send(ParseUtils.buildNotifyRequest(port, System.currentTimeMillis()));
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
