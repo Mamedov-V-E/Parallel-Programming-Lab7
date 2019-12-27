@@ -3,7 +3,7 @@ import org.zeromq.ZMQ;
 
 
 public class Cache {
-    private static final String CACHE_ADDRESS = "tcp://localhost";
+    private static final String CACHE_ADDRESS = "tcp://localhost:";
 
     private static void sendNotifyRequest (ZMQ.Socket socket, ) {
 
@@ -21,7 +21,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
-        dealer.connect(CACHE_ADDRESS + ":" + port);
+        dealer.connect(Pr);
     }
 
 }
