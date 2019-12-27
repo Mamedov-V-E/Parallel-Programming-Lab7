@@ -24,14 +24,12 @@ public class Client {
             int id = Integer.parseInt(words[1]);
             sendGetRequest(id);
         }
-        if (commandName.toLowerCase().equals("put")) {
-            if (words.length != 3) {
-                System.out.println("Incorrect command format: PUT id value");
-            } else {
-                int id = Integer.parseInt(words[1]);
-                int value = Integer.parseInt(words[2]);
-                sendPutRequest(id, value);
-            }
+        else if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.PUT) {
+            int id = Integer.parseInt(words[1]);
+            int value = Integer.parseInt(words[2]);
+            sendPutRequest(id, value);
+        } else {
+            System.out.println("invalud command");
         }
     }
 
