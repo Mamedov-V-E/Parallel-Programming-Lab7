@@ -1,7 +1,6 @@
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
-import java.net.Socket;
 
 public class Cache {
     private static final String CACHE_ADDRESS = "tcp://localhost";
@@ -18,8 +17,8 @@ public class Cache {
         int maxKey = Integer.parseInt(args[2]);
 
         ZMQ.Context context = ZMQ.context(1);
-        Socket dealer = context.socket(SocketType.DEALER);
-        dealer.coCACHE_ADDRESS + ":" + port);
+        ZMQ.Socket dealer = context.socket(SocketType.DEALER);
+        dealer.bind(CACHE_ADDRESS + ":" + port);
     }
 
 }
