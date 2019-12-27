@@ -9,7 +9,7 @@ public class Client {
         while (true) {
             String commandLine = sc.nextLine();
             String[] words = commandLine.split(" ");
-            String commandWord = words
+            String commandWord = words[0];
         }
     }
 }
