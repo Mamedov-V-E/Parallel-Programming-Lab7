@@ -20,11 +20,11 @@ public class Client {
     private static void ExecuteCommand(String commandLine) {
         String[] words = commandLine.split(" ");
         String commandName = words[0];
-        if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.GET) {
+        if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET) {
             int id = Integer.parseInt(words[1]);
             sendGetRequest(id);
         }
-        else if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.PUT) {
+        else if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
             int id = Integer.parseInt(words[1]);
             int value = Integer.parseInt(words[2]);
             sendPutRequest(id, value);
