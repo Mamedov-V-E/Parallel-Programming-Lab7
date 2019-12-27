@@ -46,7 +46,7 @@ public class Cache {
 
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
-                    
+                    cache.put()
                 }
             }
         }
