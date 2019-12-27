@@ -5,6 +5,8 @@ import org.zeromq.ZMQ;
 public class Cache {
     private static final String CACHE_ADDRESS = "tcp://localhost";
 
+    private static void sendNotif
+
     public static void main(String[] args) {
         if (args.length != 3 ||
                 ParseUtils.getCommandType(args[0]+args[1]+args[2]) != ParseUtils.CommandType.RUN_CACHE) {
@@ -20,6 +22,5 @@ public class Cache {
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(CACHE_ADDRESS + ":" + port);
     }
-    
 
 }
