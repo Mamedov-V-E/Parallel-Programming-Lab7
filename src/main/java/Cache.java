@@ -1,6 +1,10 @@
+import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
+
+import java.util.HashMap;
+import java.util.HashSet;
 
 
 public class Cache {
@@ -19,6 +23,8 @@ public class Cache {
             System.exit(-1);
         }
 
+        HashMap<Integer, Integer> cache = new HashMap<>();
+
         String port = args[0];
         int minKey = Integer.parseInt(args[1]);
         int maxKey = Integer.parseInt(args[2]);
@@ -30,7 +36,18 @@ public class Cache {
         while (!Thread.currentThread().isInterrupted()) {
             ZMsg msg = ZMsg.recvMsg(dealer, false);
 
-            
+            if (msg != null) {
+                String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
+                ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
+
+                if (commandType == ParseUtils.CommandType.GET) {
+
+                }
+
+                if (commandType == ParseUtils.CommandType.PUT) {
+                    Pair<Integer, Integer> pair =
+                }
+            }
         }
 
     }

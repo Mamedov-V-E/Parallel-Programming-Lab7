@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import java.util.regex.Pattern;
 
 public class ParseUtils {
@@ -31,5 +33,9 @@ public class ParseUtils {
 
     public static String buildNotifyRequest (String port, long currentTime) {
         return "NOTIFY " + port + " " + currentTime;
+    }
+
+    public static Pair<Integer, Integer> getKeyValue(String putCommand) {
+        
     }
 }
