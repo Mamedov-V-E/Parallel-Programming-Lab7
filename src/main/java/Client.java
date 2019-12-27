@@ -29,7 +29,7 @@ public class Client {
             int value = Integer.parseInt(words[2]);
             sendPutRequest(id, value);
         } else {
-            System.out.println("invalud command");
+            System.out.println("invalid command");
         }
     }
 
