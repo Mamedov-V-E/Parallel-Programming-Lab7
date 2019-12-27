@@ -8,6 +8,8 @@ public class Cache {
         }
 
         int port = Integer.parseInt(args[0]);
+        int minKey = Integer.parseInt(args[1]);
+        int maxKey = Integer.parseInt(args[2]);
         
     }
 }
