@@ -3,12 +3,12 @@ import org.zeromq.ZMQ;
 
 
 public class Cache {
-    private static void sendNotifyRequest (ZMQ.Socket socket, ) {
-
+    private static void sendNotifyRequest (ZMQ.Socket socket, String port) {
+        socket.send();
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
-        socket.send()
+        socket.send(ParseUtils.buildConnectRequest(port, minKey, maxKey));
     }
 
     public static void main(String[] args) {
