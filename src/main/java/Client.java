@@ -7,7 +7,8 @@ public class Client {
 
         Scanner sc = new java.util.Scanner(System.in);
         while (true) {
-            sc.
+            String commandLine = sc.nextLine();
+            
         }
     }
 }
