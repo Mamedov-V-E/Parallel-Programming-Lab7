@@ -16,7 +16,7 @@ public class Client {
     }
 
     private static void ExecuteCommand(String commandLine) {
-        String[] words = commandLine.split(" ");
+        String[] words = commandLine.split(ParseUtils.DELIMITER);
         String commandName = words[0];
         if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET) {
             int id = Integer.parseInt(words[1]);
