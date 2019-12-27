@@ -8,7 +8,7 @@ public class Client {
         Scanner sc = new java.util.Scanner(System.in);
         while (true) {
             ExecuteCommand(sc.nextLine());
-
+            
         }
     }
 
@@ -35,7 +35,7 @@ public class Client {
     }
 
     private static void sendGetRequest(int id) {
-        
+
     }
 
     private static void sendPushRequest(int id, int value) {
