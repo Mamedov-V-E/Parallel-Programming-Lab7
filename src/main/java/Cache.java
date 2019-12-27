@@ -19,7 +19,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         Socket dealer = context.socket(SocketType.DEALER);
-        dealer.b
+        dealer.coCACHE_ADDRESS + ":" + port);
     }
 
 }
