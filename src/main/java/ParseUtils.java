@@ -29,7 +29,7 @@ public class ParseUtils {
         return "CONNECT " + port + " " + minKey + " " + maxKey;
     }
 
-    public static String buildNotifyRequest (String port, long currnetTime) {
-
+    public static String buildNotifyRequest (String port, long currentTime) {
+        return "NOTIFY " + port + " " + currentTime;
     }
 }
