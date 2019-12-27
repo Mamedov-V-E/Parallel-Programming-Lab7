@@ -9,5 +9,7 @@ public class CommandsService {
         PUT
     }
 
-    public static getCommandType(String command)
+    public static getCommandType(String command) {
+        if()
+    }
 }
