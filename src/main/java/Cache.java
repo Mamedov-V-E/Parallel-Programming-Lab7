@@ -1,5 +1,6 @@
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 
 public class Cache {
@@ -27,7 +28,7 @@ public class Cache {
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
         while (!Thread.currentThread().isInterrupted()) {
-            Zmsg msg = Zmsg.recv
+            ZMsg msg = ZMsg.
         }
 
     }
