@@ -21,12 +21,8 @@ public class Client {
 //        String[] words = commandLine.split(" ");
 //        String commandName = words[0];
         if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.GET) {
-            if (words.length != 2) {
-                System.out.println("Incorrect command format: GET id");
-            } else {
-                int id = Integer.parseInt(words[1]);
-                sendGetRequest(id);
-            }
+            int id = Integer.parseInt(words[1]);
+            sendGetRequest(id);
         }
         if (commandName.toLowerCase().equals("put")) {
             if (words.length != 3) {
