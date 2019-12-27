@@ -19,6 +19,4 @@ public class CommandsService {
         }
         return CommandType.INVALID;
     }
-
-    
 }
