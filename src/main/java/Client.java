@@ -4,12 +4,13 @@ import org.zeromq.ZMQ;
 import java.util.Scanner;
 
 public class Client {
-    public static final String PROXI_ADDRES = "proxi";
+    public static final String PROXI_ADDRES = "tcp//localhost:8080";
 
     public static void main(String[] args) {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket requester = context.socket(SocketType.REQ);
-        requester.connect()
+        requester.connect(PROXI_ADDRES);
+        System.out.println("launch and connect client");
         Scanner sc = new java.util.Scanner(System.in);
         while (true) {
             ExecuteCommand(sc.nextLine());
