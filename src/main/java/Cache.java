@@ -1,4 +1,10 @@
+import org.zeromq.SocketType;
+import org.zeromq.ZMQ;
+
+import java.net.Socket;
+
 public class Cache {
+    private static final String CACHE_ADDRESS = "tcp//"
 
     public static void main(String[] args) {
         if (args.length != 3 ||
@@ -10,6 +16,9 @@ public class Cache {
         int port = Integer.parseInt(args[0]);
         int minKey = Integer.parseInt(args[1]);
         int maxKey = Integer.parseInt(args[2]);
-        
+
+        ZMQ.Context context = ZMQ.context(1);
+        Socket dealer = context.socket(SocketType.DEALER);
+        dealer.bind();
     }
 }
