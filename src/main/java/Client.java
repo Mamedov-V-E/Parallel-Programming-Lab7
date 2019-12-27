@@ -7,9 +7,18 @@ public class Client {
 
         Scanner sc = new java.util.Scanner(System.in);
         while (true) {
-            String commandLine = sc.nextLine();
-            String[] words = commandLine.split(" ");
-            String commandWord = words[0];
+            ExecuteCommand(sc.nextLine());
+
+        }
+    }
+
+    private static void ExecuteCommand(String commandLine) {
+        String[] words = commandLine.split(" ");
+        String commandName = words[0];
+        if (commandName.toLowerCase().equals("get")) {
+            if (words.length != 2) {
+                System.out.println("");
+            }
         }
     }
 }
