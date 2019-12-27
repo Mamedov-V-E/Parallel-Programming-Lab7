@@ -10,7 +10,7 @@ public class Client {
         requester.connect(Proxi.CLIENT_ROUTER_ADDRES);
         System.out.println("launch and connect client");
         Scanner sc = new java.util.Scanner(System.in);
-        while (true) {
+        while (!Thread.currentThread().isInterrupted()) {
             ExecuteCommand(sc.nextLine());
         }
     }

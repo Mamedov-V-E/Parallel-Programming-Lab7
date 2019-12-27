@@ -26,6 +26,9 @@ public class Cache {
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
+        while (!Thread.currentThread().isInterrupted()) {
+
+        }
 
     }
 
