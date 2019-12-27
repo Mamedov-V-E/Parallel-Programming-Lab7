@@ -6,7 +6,8 @@ public class CommandsService {
 
     public enum CommandType {
         GET,
-        PUT
+        PUT,
+        INVALID
     }
 
     public static CommandType getCommandType(String command) {
@@ -16,5 +17,8 @@ public class CommandsService {
         if (PUT_COMMAND_PATTERN.matcher(command).find()) {
             return CommandType.PUT;
         }
+        return CommandType.INVALID;
     }
+
+    
 }
