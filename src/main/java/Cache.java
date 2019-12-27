@@ -7,6 +7,10 @@ public class Cache {
 
     }
 
+    private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
+        
+    }
+
     public static void main(String[] args) {
         if (args.length != 3 ||
                 ParseUtils.getCommandType(args[0]+args[1]+args[2]) != ParseUtils.CommandType.RUN_CACHE) {
@@ -21,6 +25,8 @@ public class Cache {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
+
+
     }
 
 }
