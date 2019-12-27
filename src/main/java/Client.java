@@ -8,7 +8,7 @@ public class Client {
         Scanner sc = new java.util.Scanner(System.in);
         while (true) {
             ExecuteCommand(sc.nextLine());
-            
+
         }
     }
 
@@ -23,9 +23,9 @@ public class Client {
                 sendGetRequest(id);
             }
         }
-        if (commandName.toLowerCase().equals("push")) {
+        if (commandName.toLowerCase().equals("put")) {
             if (words.length != 3) {
-                System.out.println("Incorrect command format: PUSH id value");
+                System.out.println("Incorrect command format: PUT id value");
             } else {
                 int id = Integer.parseInt(words[1]);
                 int value = Integer.parseInt(words[2]);
