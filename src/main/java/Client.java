@@ -18,8 +18,8 @@ public class Client {
     }
 
     private static void ExecuteCommand(String commandLine) {
-//        String[] words = commandLine.split(" ");
-//        String commandName = words[0];
+        String[] words = commandLine.split(" ");
+        String commandName = words[0];
         if (CommandsService.getCommandType(commandLine) == CommandsService.CommandType.GET) {
             int id = Integer.parseInt(words[1]);
             sendGetRequest(id);
