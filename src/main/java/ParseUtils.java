@@ -8,6 +8,7 @@ public class ParseUtils {
     public enum CommandType {
         GET,
         PUT,
+        RUN_CACHE,
         INVALID
     }
 
@@ -17,6 +18,9 @@ public class ParseUtils {
         }
         if (PUT_COMMAND_PATTERN.matcher(command).find()) {
             return CommandType.PUT;
+        }
+        if (RUN_CACHE_PATTERN.matcher(command).find()) {
+            return CommandType.RUN_CACHE;
         }
         return CommandType.INVALID;
     }
