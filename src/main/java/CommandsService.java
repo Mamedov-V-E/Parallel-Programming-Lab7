@@ -9,7 +9,12 @@ public class CommandsService {
         PUT
     }
 
-    public static getCommandType(String command) {
-        if (GET_COMMAND_PATTERN.matcher(command))
+    public static CommandType getCommandType(String command) {
+        if (GET_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.GET;
+        }
+        if (PUT_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.PUT;
+        }
     }
 }
