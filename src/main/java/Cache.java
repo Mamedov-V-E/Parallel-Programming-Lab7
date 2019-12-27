@@ -19,7 +19,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
-        dealer.connect(Proxi.DEALER_ADDRES);
+        dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
     }
 
 }
