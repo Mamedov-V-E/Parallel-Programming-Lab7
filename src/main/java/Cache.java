@@ -4,7 +4,7 @@ import org.zeromq.ZMQ;
 import java.net.Socket;
 
 public class Cache {
-    private static final String CACHE_ADDRESS = "tcp//"
+    private static final String CACHE_ADDRESS = "tcp://localhost"
 
     public static void main(String[] args) {
         if (args.length != 3 ||
