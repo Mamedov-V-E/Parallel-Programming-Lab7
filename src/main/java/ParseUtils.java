@@ -42,6 +42,9 @@ public class ParseUtils {
         if (NOTIFY_COMMAND_PATTERN.matcher(command).find()) {
             return CommandType.NOTIFY;
         }
+        if (OK_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.OK;
+        }
         return CommandType.INVALID;
     }
 
@@ -51,6 +54,10 @@ public class ParseUtils {
 
     public static String buildNotifyRequest () {
         return "NOTIFY";
+    }
+
+    public static String buildOkResponse () {
+        return "OK";
     }
 
     public static Pair<Integer, Integer> getKeyValue(String putCommand) {
