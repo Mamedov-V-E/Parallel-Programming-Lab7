@@ -27,6 +27,21 @@ public class Proxi {
         }
     }
 
+    private void sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+        for (int i = 0; i < cacheServers.size(); i++) {
+            CacheLine cacheServer = cacheServers.get(i);
+            if (cacheServer.isDead()) {
+                cacheServers.remove(i);
+                continue;
+            }
+            if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
+                cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
+                msg.send(backend, false);
+                break;
+            }
+        }
+    }
+
     public static void main () {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
