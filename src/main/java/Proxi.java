@@ -12,7 +12,7 @@ public class Proxi {
 
     private ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
-    private void sendGetRequest (ZMQ.Socket backend, Integer id) {
+    private void sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
