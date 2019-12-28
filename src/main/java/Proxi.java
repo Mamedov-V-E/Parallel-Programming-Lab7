@@ -19,7 +19,7 @@ public class Proxi {
                 continue;
             }
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
-                
+                cacheServer.getAddress().send()
                 break;
             }
         }
