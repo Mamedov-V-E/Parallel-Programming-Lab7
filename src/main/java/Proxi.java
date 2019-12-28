@@ -12,7 +12,7 @@ public class Proxi {
 
     private ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
-    private void sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+    private boolean sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
@@ -22,12 +22,15 @@ public class Proxi {
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
                 cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 msg.send(backend, false);
-                break;
+                return true;
             }
         }
+        return false;
     }
 
-    private void sendPutRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+    private boolean sendPutRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+        boolean isIdValid = false;
+
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
@@ -37,8 +40,11 @@ public class Proxi {
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
                 cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 msg.send(backend, false);
+
+                isIdValid = true;
             }
         }
+        return isIdValid;
     }
 
     public static void main () {
@@ -62,7 +68,7 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.GET) {
                     Integer id = ParseUtils.getKey(command);
-                     
+                    boolean isIdValid = sendGet
 
                 }
             }
