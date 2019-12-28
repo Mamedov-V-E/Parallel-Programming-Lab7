@@ -11,7 +11,7 @@ public class Client {
         requester.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
         System.out.println("launch and connect client");
-        
+
         Scanner sc = new java.util.Scanner(System.in);
         while (!Thread.currentThread().isInterrupted()) {
             ExecuteCommand(sc.nextLine());
@@ -33,8 +33,8 @@ public class Client {
         }
     }
 
-    private static void sendGetRequest(Integer id) {
-
+    private static void sendGetRequest(ZMQ.Socket socket, Integer id) {
+        socket.send()
     }
 
     private static void sendPutRequest(Integer id, Integer value) {
