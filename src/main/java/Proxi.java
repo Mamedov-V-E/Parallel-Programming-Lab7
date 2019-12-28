@@ -97,7 +97,10 @@ public class Proxi {
                 String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 ParseUtils.CommandType commandType = ParseUtils.getKeyValue(command);
 
-                if (commandType == ParseUtils.CommandType.CONNECT)
+                if (commandType == ParseUtils.CommandType.CONNECT) {
+                    Pair<Integer, Integer> range = ParseUtils.getKeyValue(command);
+
+                }
             }
 
         }
