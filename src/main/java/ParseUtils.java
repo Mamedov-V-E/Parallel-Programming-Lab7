@@ -34,11 +34,11 @@ public class ParseUtils {
         if (RETURN_VALUE_COMMAND_PATTERN.matcher(command).find()) {
             return CommandType.RETURN_VALUE;
         }
-        if (RETURN_VALUE_COMMAND_PATTERN.matcher(command).find()) {
-            return CommandType.RETURN_VALUE;
+        if (CONNECT_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.CONNECT;
         }
-        if (RETURN_VALUE_COMMAND_PATTERN.matcher(command).find()) {
-            return CommandType.RETURN_VALUE;
+        if (NOTIFY_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.NOTIFY;
         }
         return CommandType.INVALID;
     }
