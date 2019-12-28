@@ -14,6 +14,10 @@ public class Proxi {
 
     private static ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
+    private static void updateHeartbeat(String id) {
+
+    }
+
     private static boolean sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
@@ -103,6 +107,9 @@ public class Proxi {
                     cacheServers.add(new CacheLine(
                             id, address, range.getKey(), range.getValue(), System.currentTimeMillis()
                     ));
+                }
+
+                if (commandType == ParseUtils.CommandType.NOTIFY) {
 
                 }
             }

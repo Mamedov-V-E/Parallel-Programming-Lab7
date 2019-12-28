@@ -14,6 +14,7 @@ public class ParseUtils {
         RUN_CACHE,
         RETURN_VALUE,
         CONNECT,
+        NOTIFY,
         INVALID
     }
 
