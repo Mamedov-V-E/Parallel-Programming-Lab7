@@ -10,9 +10,9 @@ public class Proxi {
     public static final String CACHE_ROUTER_ADDRES = "tcp//localhost:8081";
     public static final int HEARTBEAT_TIMEOUT = 5000;
 
-    private ArrayList<CacheLine> cacheServers = new ArrayList<>();
+    private static ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
-    private boolean sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+    private static boolean sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
@@ -28,7 +28,7 @@ public class Proxi {
         return false;
     }
 
-    private boolean sendPutRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+    private static boolean sendPutRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         boolean isIdValid = false;
 
         for (int i = 0; i < cacheServers.size(); i++) {
@@ -68,7 +68,11 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.GET) {
                     Integer id = ParseUtils.getKey(command);
-                    boolean isIdValid = sendGet
+                    boolean isIdValid = sendGetRequest(backend, id, msg);
+
+                    if (!isIdValid) {
+                        msg.getLast()
+                    }
 
                 }
             }
