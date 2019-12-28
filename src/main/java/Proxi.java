@@ -27,7 +27,7 @@ public class Proxi {
         }
     }
 
-    private void sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
+    private void sendPutRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
