@@ -18,7 +18,7 @@ public class Cache {
     public static void main(String[] args) {
         if (args.length != 2 ||
                 ParseUtils.getCommandType(args[0] + " " + args[1]) != ParseUtils.CommandType.RUN_CACHE) {
-            System.out.println("incorrect command-line arguments " + args[0] + " " + args[1]);
+            System.out.println("incorrect command-line arguments");
             System.exit(-1);
         }
 
@@ -56,6 +56,7 @@ public class Cache {
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
+                    System.out.println("got PUT command!");
                     Integer[] pair = ParseUtils.getKeyValue(command);
                     cache.put(pair[0], pair[1]);
 

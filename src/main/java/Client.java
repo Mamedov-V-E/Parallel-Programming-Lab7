@@ -15,6 +15,8 @@ public class Client {
         while (!Thread.currentThread().isInterrupted()) {
             ExecuteCommand(requester, sc.nextLine());
         }
+        requester.close();
+        context.close();
     }
 
     private static void ExecuteCommand(ZMQ.Socket requester, String commandLine) {

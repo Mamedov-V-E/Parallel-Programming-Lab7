@@ -47,7 +47,7 @@ public class Proxi {
                 continue;
             }
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
-                System.out.println("found id among cache servers");
+                //System.out.println("found id among cache servers");
                 cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 msg.send(backend, false);
 
@@ -75,7 +75,6 @@ public class Proxi {
 
             //System.out.println("outside if");
             if (items.pollin(0)) {
-                System.out.println("inside if1");
                 ZMsg msg = ZMsg.recvMsg(frontend);
                 String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
@@ -93,6 +92,7 @@ public class Proxi {
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
+                    System.out.println("got PUT command!");
                     Integer[] pair = ParseUtils.getKeyValue(command);
                     isIdValid = sendPutRequest(backend, pair[0], msg);
 
