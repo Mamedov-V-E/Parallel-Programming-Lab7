@@ -54,7 +54,7 @@ public class Cache {
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
                     cache.put(pair.getKey(), pair.getValue());
-                    
+
                     msg.getLast().reset(ParseUtils.buildOkResponse());
                     msg.send(dealer);
                 }
