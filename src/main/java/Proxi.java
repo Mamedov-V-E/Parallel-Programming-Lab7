@@ -1,3 +1,5 @@
+import org.zeromq.ZMQ;
+
 import java.util.ArrayList;
 
 public class Proxi {
@@ -7,6 +9,8 @@ public class Proxi {
 
     public static void main () {
         ArrayList<CacheLine> cacheServers = new ArrayList<>();
+
+        ZMQ.Context context = ZMQ.context(1);
         
     }
 }
