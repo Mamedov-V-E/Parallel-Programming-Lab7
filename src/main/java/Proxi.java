@@ -79,7 +79,7 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
-                    
+
                 }
             }
 
