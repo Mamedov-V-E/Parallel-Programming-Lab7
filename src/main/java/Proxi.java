@@ -90,6 +90,10 @@ public class Proxi {
                 }
             }
 
+            if (items.pollin(1)) {
+                
+            }
+
         }
     }
 }
