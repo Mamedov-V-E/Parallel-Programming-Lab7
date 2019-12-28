@@ -15,9 +15,6 @@ public class Client {
         Scanner sc = new java.util.Scanner(System.in);
         while (!Thread.currentThread().isInterrupted()) {
             ExecuteCommand(requester, sc.nextLine());
-            String response = requester.recvStr();
-
-            System.out.println(response);
         }
     }
 
@@ -25,6 +22,10 @@ public class Client {
         if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET ||
                 ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
             requester.send(commandLine);
+
+            String response = requester.recvStr();
+
+            System.out.println(response);
         } else {
             System.out.println("invalid command");
         }
