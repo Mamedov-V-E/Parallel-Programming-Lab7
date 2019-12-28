@@ -22,6 +22,8 @@ public class Proxi {
         items.register(backend, ZMQ.Poller.POLLERR);
 
         while (!Thread.currentThread().isInterrupted()) {
+            items.poll(HEARTBEAT_TIMEOUT);
+
             
         }
     }
