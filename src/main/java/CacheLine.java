@@ -36,6 +36,6 @@ public class CacheLine {
     }
 
     public boolean isDead() {
-        return System.currentTimeMillis() >
+        return System.currentTimeMillis() > hertbeatTime + 2 * Proxi.HEARTBEAT_TIMEOUT;
     }
 }
