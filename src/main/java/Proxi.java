@@ -27,8 +27,13 @@ public class Proxi {
 
             if (items.pollin(0)) {
                 ZMsg msg = ZMsg.recvMsg(frontend);
-                String cmd = new String(msg.getLast().getData(), ZMQ.CHARSET);
-                ParseUtils.CommandType commandType = 
+                String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
+                ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
+
+                if (commandType == ParseUtils.CommandType.GET) {
+                    Integer id = ParseUtils.getKey(command);
+                    
+                }
             }
         }
     }
