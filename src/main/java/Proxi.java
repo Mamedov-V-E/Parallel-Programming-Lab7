@@ -1,4 +1,3 @@
-import com.sun.media.sound.SF2Region;
 import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZFrame;
@@ -109,10 +108,10 @@ public class Proxi {
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
 
                 if (commandType == ParseUtils.CommandType.CONNECT) {
-                    Pair<Integer, Integer> range = ParseUtils.getKeyValue(command);
+                    Integer[] range = ParseUtils.getKeyValue(command);
 
                     cacheServers.add(new CacheLine(
-                            id, address, range.getKey(), range.getValue(), System.currentTimeMillis()
+                            id, address, range[0], range[1], System.currentTimeMillis()
                     ));
                 }
 

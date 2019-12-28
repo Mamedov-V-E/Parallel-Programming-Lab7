@@ -60,9 +60,9 @@ public class ParseUtils {
         return "OK";
     }
 
-    public static Pair<Integer, Integer> getKeyValue(String putCommand) {
+    public static Integer[] getKeyValue(String putCommand) {
         String[] words = putCommand.split(DELIMITER);
-        return new Pair<>(Integer.parseInt(words[1]), Integer.parseInt(words[2]));
+        return new Integer[] {Integer.parseInt(words[1]), Integer.parseInt(words[2])};
     }
 
     public static Integer getKey (String getCommand) {
