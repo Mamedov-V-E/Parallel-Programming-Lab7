@@ -10,7 +10,7 @@ public class Client {
         ZMQ.Socket requester = context.socket(SocketType.REQ);
         requester.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
-        System.out.println("launch and connect client");
+        System.out.println("client started");
 
         Scanner sc = new java.util.Scanner(System.in);
         while (!Thread.currentThread().isInterrupted()) {
