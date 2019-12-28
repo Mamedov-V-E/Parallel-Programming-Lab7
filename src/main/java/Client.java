@@ -1,3 +1,4 @@
+import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
@@ -16,16 +17,14 @@ public class Client {
     }
 
     private static void ExecuteCommand(String commandLine) {
-        String[] words = commandLine.split(ParseUtils.DELIMITER);
-        String commandName = words[0];
         if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET) {
-            int id = Integer.parseInt(words[1]);
+            int id = ParseUtils.getKey(commandLine);
             sendGetRequest(id);
         }
         else if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
-
-            int id = Integer.parseInt(words[1]);
-            int value = Integer.parseInt(words[2]);
+            Pair<Integer, Integer> pair = ParseUtils.getKeyValue(commandLine);
+            int id = pair.getKey();
+            int value = pair.getValue();
             sendPutRequest(id, value);
         } else {
             System.out.println("invalid command");
