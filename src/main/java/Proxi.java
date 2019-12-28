@@ -13,6 +13,12 @@ public class Proxi {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
-        
+        ZMQ.Socket backend = context.socket(SocketType.ROUTER);
+        frontend.bind(CLIENT_ROUTER_ADDRES);
+        frontend.bind(CACHE_ROUTER_ADDRES);
+
+        ZMQ.Poller items = context.poller(2);
+        items.register(frontend, ZMQ.Poller.POLLERR);
+        items.register(backend, ZMQ.Poller.POLLERR);
     }
 }
