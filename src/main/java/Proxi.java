@@ -123,5 +123,9 @@ public class Proxi {
             }
 
         }
+        
+        frontend.close();
+        backend.close();
+        context.close();
     }
 }
