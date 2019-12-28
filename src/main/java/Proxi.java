@@ -9,6 +9,10 @@ public class Proxi {
     public static final String CACHE_ROUTER_ADDRES = "tcp//localhost:8081";
     public static final int HEARTBEAT_TIMEOUT = 5000;
 
+    private static void sendGetRequest (Integer id) {
+        for ()
+    }
+
     public static void main () {
         ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
@@ -32,7 +36,7 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.GET) {
                     Integer id = ParseUtils.getKey(command);
-                    
+
                 }
             }
         }
