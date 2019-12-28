@@ -9,13 +9,23 @@ public class Proxi {
     public static final String CACHE_ROUTER_ADDRES = "tcp//localhost:8081";
     public static final int HEARTBEAT_TIMEOUT = 5000;
 
-    private static void sendGetRequest (Integer id) {
-        for ()
+    private ArrayList<CacheLine> cacheServers = new ArrayList<>();
+
+    private void sendGetRequest (Integer id) {
+        for (int i = 0; i < cacheServers.size(); i++) {
+            CacheLine cacheServer = cacheServers.get(i);
+            if (cacheServer.isDead()) {
+                cacheServers.remove(i);
+                continue;
+            }
+            if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
+
+                break;
+            }
+        }
     }
 
     public static void main () {
-        ArrayList<CacheLine> cacheServers = new ArrayList<>();
-
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
         ZMQ.Socket backend = context.socket(SocketType.ROUTER);
