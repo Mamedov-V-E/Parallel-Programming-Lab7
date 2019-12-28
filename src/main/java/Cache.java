@@ -63,9 +63,9 @@ public class Cache {
                 dealer.send(ParseUtils.buildNotifyRequest());
             }
         }
+
         dealer.close();
         context.close();
-
     }
 
 }
