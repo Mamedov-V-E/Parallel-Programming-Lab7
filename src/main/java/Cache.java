@@ -12,7 +12,7 @@ public class Cache {
         socket.send(ParseUtils.buildNotifyRequest());
     }
 
-    private static void sendConnectRequest (ZMQ.Socket socket, int minKey, int maxKey) {
+    private static void sendConnectRequest (ZMQ.Socket socket, Integer minKey, Integer maxKey) {
         socket.send(ParseUtils.buildConnectRequest(minKey, maxKey));
     }
 
