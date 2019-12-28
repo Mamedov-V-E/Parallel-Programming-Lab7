@@ -1,10 +1,8 @@
-import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
 
 import java.util.HashMap;
-import java.util.HashSet;
 
 
 public class Cache {
