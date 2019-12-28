@@ -6,6 +6,8 @@ public class ParseUtils {
     public static final Pattern GET_COMMAND_PATTERN = Pattern.compile("^GET \\d+&", Pattern.CASE_INSENSITIVE);
     public static final Pattern PUT_COMMAND_PATTERN = Pattern.compile("^PUT \\d+ \\d+&", Pattern.CASE_INSENSITIVE);
     public static final Pattern RETURN_VALUE_COMMAND_PATTERN = Pattern.compile("^RETURN_VALUE \\d+&", Pattern.CASE_INSENSITIVE);
+    public static final Pattern CONNECT_COMMAND_PATTERN = Pattern.compile("^CONNECT&", Pattern.CASE_INSENSITIVE);
+    public static final Pattern NOTIFY_COMMAND_PATTERN = Pattern.compile("^NOTIFY+&", Pattern.CASE_INSENSITIVE);
     public static final Pattern RUN_CACHE_PATTERN = Pattern.compile("^\\d+ \\d+ \\d+&");
     public static final String DELIMITER = " ";
 
