@@ -26,8 +26,8 @@ public class Cache {
         HashMap<Integer, Integer> cache = new HashMap<>();
 
         String port = args[0];
-        int minKey = Integer.parseInt(args[1]);
-        int maxKey = Integer.parseInt(args[2]);
+        Integer minKey = Integer.parseInt(args[1]);
+        Integer maxKey = Integer.parseInt(args[2]);
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
@@ -45,7 +45,8 @@ public class Cache {
                     Integer value = cache.get(id);
                     String response = (value == null) ? "null" : value.toString();
 
-                    msg.getLast().reset();
+                    msg.getLast().reset(ParseUtils.buildReturnValueResponse(value));
+                    msg.send();
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
