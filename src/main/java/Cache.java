@@ -44,6 +44,8 @@ public class Cache {
                     Integer id = ParseUtils.getKey(command);
                     Integer value = cache.get(id);
                     String response = (value == null) ? "null" : value.toString();
+
+                    
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
