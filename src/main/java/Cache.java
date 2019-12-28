@@ -41,12 +41,13 @@ public class Cache {
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
 
                 if (commandType == ParseUtils.CommandType.GET) {
-
+                    
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
-                    cache.put()
+                    cache.put(pair.getKey(), pair.getValue());
+                    msg.destroy();
                 }
             }
         }
