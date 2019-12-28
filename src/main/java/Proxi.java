@@ -65,6 +65,8 @@ public class Proxi {
         frontend.bind(CLIENT_ROUTER_ADDRES);
         frontend.bind(CACHE_ROUTER_ADDRES);
 
+        System.out.println("proxi started");
+
         ZMQ.Poller items = context.poller(2);
         items.register(frontend, ZMQ.Poller.POLLERR);
         items.register(backend, ZMQ.Poller.POLLERR);
