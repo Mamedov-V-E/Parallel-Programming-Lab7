@@ -13,6 +13,7 @@ public class ParseUtils {
         PUT,
         RUN_CACHE,
         RETURN_VALUE,
+        CONNECT,
         INVALID
     }
 

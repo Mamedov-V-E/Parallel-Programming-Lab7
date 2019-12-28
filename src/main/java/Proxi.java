@@ -94,7 +94,10 @@ public class Proxi {
                 ZMsg msg = ZMsg.recvMsg(backend);
                 ZFrame address = msg.unwrap();
                 String id = new String(address.getData(), ZMQ.CHARSET);
-                String command = new String(msg.getLast().getData(), ZMQ.CHARSET)
+                String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
+                ParseUtils.CommandType commandType = ParseUtils.getKeyValue(command);
+
+                if (commandType == ParseUtils.CommandType.CONNECT)
             }
 
         }
