@@ -31,7 +31,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
-        dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
+        dealer.connect(Proxi.CACHE_ROUTER_ADDRES);
 
         sendConnectRequest(dealer, port, minKey, maxKey);
         Long nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
