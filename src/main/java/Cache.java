@@ -46,7 +46,7 @@ public class Cache {
                     String response = (value == null) ? "null" : value.toString();
 
                     msg.getLast().reset(ParseUtils.buildReturnValueResponse(value));
-                    msg.send();
+                    msg.send(dealer);
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
@@ -55,6 +55,8 @@ public class Cache {
                     msg.destroy();
                 }
             }
+
+
         }
 
     }
