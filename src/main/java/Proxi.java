@@ -20,5 +20,9 @@ public class Proxi {
         ZMQ.Poller items = context.poller(2);
         items.register(frontend, ZMQ.Poller.POLLERR);
         items.register(backend, ZMQ.Poller.POLLERR);
+
+        while (!Thread.currentThread().isInterrupted()) {
+            
+        }
     }
 }
