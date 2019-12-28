@@ -60,31 +60,8 @@ public class Proxi {
         items.register(backend, ZMQ.Poller.POLLERR);
 
         while (!Thread.currentThread().isInterrupted()) {
-            items.poll(HEARTBEAT_TIMEOUT);
 
-            if (items.pollin(0)) {
-                ZMsg msg = ZMsg.recvMsg(frontend);
-                String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
-                ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
-                boolean isIdValid;
-
-                if (commandType == ParseUtils.CommandType.GET) {
-                    Integer id = ParseUtils.getKey(command);
-                    isIdValid = sendGetRequest(backend, id, msg);
-
-                    if (!isIdValid) {
-                        msg.getLast().reset("id is out of cached range");
-                        msg.send(frontend);
-                    }
-                }
-
-                if (commandType == ParseUtils.CommandType.PUT) {
-                    Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
-                    isIdValid = sendGetRequest(backend, pair.getKey(), msg);
-                    
-                }
-            }
-
+            
         }
     }
 }
