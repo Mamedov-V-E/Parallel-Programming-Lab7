@@ -1,3 +1,4 @@
+import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Proxi {
         ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
         ZMQ.Context context = ZMQ.context(1);
+        ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
         
     }
 }
