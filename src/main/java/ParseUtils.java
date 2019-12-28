@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 public class ParseUtils {
     public static final Pattern GET_COMMAND_PATTERN = Pattern.compile("^GET \\d+&", Pattern.CASE_INSENSITIVE);
     public static final Pattern PUT_COMMAND_PATTERN = Pattern.compile("^PUT \\d+ \\d+&", Pattern.CASE_INSENSITIVE);
-    public static final Pattern PUT_COMMAND_PATTERN = Pattern.compile("^RETURN_VALUE \\d+&", Pattern.CASE_INSENSITIVE);
+    public static final Pattern RETURN_VALUE_COMMAND_PATTERN = Pattern.compile("^RETURN_VALUE \\d+&", Pattern.CASE_INSENSITIVE);
     public static final Pattern RUN_CACHE_PATTERN = Pattern.compile("^\\d+ \\d+ \\d+&");
     public static final String DELIMITER = " ";
 
@@ -28,6 +28,9 @@ public class ParseUtils {
         }
         if (RUN_CACHE_PATTERN.matcher(command).find()) {
             return CommandType.RUN_CACHE;
+        }
+        if (RETURN_VALUE_COMMAND_PATTERN.matcher(command).find()) {
+            return CommandType.RETURN_VALUE;
         }
         return CommandType.INVALID;
     }
