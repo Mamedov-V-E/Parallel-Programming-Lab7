@@ -66,10 +66,11 @@ public class Proxi {
                 ZMsg msg = ZMsg.recvMsg(frontend);
                 String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
+                boolean isIdValid;
 
                 if (commandType == ParseUtils.CommandType.GET) {
                     Integer id = ParseUtils.getKey(command);
-                    boolean isIdValid = sendGetRequest(backend, id, msg);
+                    isIdValid = sendGetRequest(backend, id, msg);
 
                     if (!isIdValid) {
                         msg.getLast().reset("id is out of cached range");
@@ -79,7 +80,8 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
-
+                    isIdValid = sendGetRequest(backend, pair.getKey(), msg);
+                    
                 }
             }
 
