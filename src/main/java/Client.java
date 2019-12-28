@@ -21,8 +21,8 @@ public class Client {
     private static void ExecuteCommand(ZMQ.Socket requester, String commandLine) {
         if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET ||
                 ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
-            requester.send(commandLine);
 
+            requester.send(commandLine);
             String response = requester.recvStr();
 
             System.out.println(response);
