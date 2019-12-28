@@ -33,8 +33,8 @@ public class ParseUtils {
         return "CONNECT " + port + " " + minKey + " " + maxKey;
     }
 
-    public static String buildNotifyRequest (String port, long currentTime) {
-        return "NOTIFY " + port + " " + currentTime;
+    public static String buildNotifyRequest () {
+        return "NOTIFY";
     }
 
     public static Pair<Integer, Integer> getKeyValue(String putCommand) {

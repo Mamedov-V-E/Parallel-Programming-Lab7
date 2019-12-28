@@ -33,6 +33,8 @@ public class Cache {
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
+        Long nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
+
         while (!Thread.currentThread().isInterrupted()) {
             ZMsg msg = ZMsg.recvMsg(dealer, false);
 
@@ -56,7 +58,10 @@ public class Cache {
                 }
             }
 
-
+            if (System.currentTimeMillis() >= nextHearbeatTime) {
+                nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
+                dealer.send(ParseUtils.buildNotifyRequest());
+            }
         }
 
     }
