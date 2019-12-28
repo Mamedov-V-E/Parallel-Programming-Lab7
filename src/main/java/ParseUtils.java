@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 public class ParseUtils {
     public static final Pattern GET_COMMAND_PATTERN = Pattern.compile("^GET \\d+$", Pattern.CASE_INSENSITIVE);
     public static final Pattern PUT_COMMAND_PATTERN = Pattern.compile("^PUT \\d+ \\d+$", Pattern.CASE_INSENSITIVE);
-    public static final Pattern RETURN_VALUE_COMMAND_PATTERN = Pattern.compile("^RETURN_VALUE \\d+$", Pattern.CASE_INSENSITIVE);
+    public static final Pattern RETURN_VALUE_COMMAND_PATTERN = Pattern.compile("^RETURN_VALUE (\\d+|null)$", Pattern.CASE_INSENSITIVE);
     public static final Pattern CONNECT_COMMAND_PATTERN = Pattern.compile("^CONNECT \\d+ \\d+$", Pattern.CASE_INSENSITIVE);
     public static final Pattern NOTIFY_COMMAND_PATTERN = Pattern.compile("^NOTIFY$", Pattern.CASE_INSENSITIVE);
     public static final Pattern OK_COMMAND_PATTERN = Pattern.compile("^OK$", Pattern.CASE_INSENSITIVE);
@@ -68,7 +68,7 @@ public class ParseUtils {
         return Integer.parseInt(words[1]);
     }
 
-    public static String buildReturnValueResponse (Integer value) {
+    public static String buildReturnValueResponse (String value) {
         return "RETURN_VALUE " + value;
     }
 }

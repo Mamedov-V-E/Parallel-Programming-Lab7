@@ -11,6 +11,7 @@ public class Cache {
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, Integer minKey, Integer maxKey) {
+        System.out.println("connect req send");
         socket.send(ParseUtils.buildConnectRequest(minKey, maxKey));
     }
 
@@ -28,7 +29,7 @@ public class Cache {
 
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
-        dealer.connect(Proxi.CACHE_ROUTER_ADDRES);
+        dealer.connect(Proxi.CACHE_ROUTER_ADDRESS);
 
         System.out.println("cache server started");
 
@@ -43,11 +44,14 @@ public class Cache {
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
 
                 if (commandType == ParseUtils.CommandType.GET) {
+                    System.out.println("got GET command!");
                     Integer id = ParseUtils.getKey(command);
                     Integer value = cache.get(id);
                     String response = (value == null) ? "null" : value.toString();
 
-                    msg.getLast().reset(ParseUtils.buildReturnValueResponse(value));
+                    System.out.println("response = " + response);
+
+                    msg.getLast().reset(ParseUtils.buildReturnValueResponse(response));
                     msg.send(dealer);
                 }
 

@@ -6,9 +6,9 @@ import org.zeromq.ZMsg;
 import java.util.ArrayList;
 
 public class Proxi {
-    public static final String CLIENT_ROUTER_ADDRES = "tcp://localhost:8080";
-    public static final String CACHE_ROUTER_ADDRES = "tcp://localhost:8081";
-    public static final int HEARTBEAT_TIMEOUT = 5000;
+    public static final String CLIENT_ROUTER_ADDRESS = "tcp://localhost:8080";
+    public static final String CACHE_ROUTER_ADDRESS = "tcp://localhost:8081";
+    public static final int HEARTBEAT_TIMEOUT = 150;
 
     private static final ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
@@ -47,6 +47,7 @@ public class Proxi {
                 continue;
             }
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
+                System.out.println("found id among cache servers");
                 cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 msg.send(backend, false);
 
@@ -60,21 +61,21 @@ public class Proxi {
         ZMQ.Context context = ZMQ.context(1);
         ZMQ.Socket frontend = context.socket(SocketType.ROUTER);
         ZMQ.Socket backend = context.socket(SocketType.ROUTER);
-        frontend.bind(CLIENT_ROUTER_ADDRES);
-        frontend.bind(CACHE_ROUTER_ADDRES);
+        frontend.bind(CLIENT_ROUTER_ADDRESS);
+        backend.bind(CACHE_ROUTER_ADDRESS);
 
         System.out.println("proxi started");
 
         ZMQ.Poller items = context.poller(2);
-        items.register(frontend, ZMQ.Poller.POLLERR);
-        items.register(backend, ZMQ.Poller.POLLERR);
+        items.register(frontend, ZMQ.Poller.POLLIN);
+        items.register(backend, ZMQ.Poller.POLLIN);
 
         while (!Thread.currentThread().isInterrupted()) {
             items.poll(HEARTBEAT_TIMEOUT);
 
-            System.out.println("outside if");
+            //System.out.println("outside if");
             if (items.pollin(0)) {
-                System.out.println("inside if");
+                System.out.println("inside if1");
                 ZMsg msg = ZMsg.recvMsg(frontend);
                 String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
@@ -93,7 +94,7 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.PUT) {
                     Integer[] pair = ParseUtils.getKeyValue(command);
-                    isIdValid = sendGetRequest(backend, pair[0], msg);
+                    isIdValid = sendPutRequest(backend, pair[0], msg);
 
                     if (!isIdValid) {
                         msg.getLast().reset("id is out of cached range");
@@ -103,6 +104,7 @@ public class Proxi {
             }
 
             if (items.pollin(1)) {
+                //System.out.println("got command from cache server");
                 ZMsg msg = ZMsg.recvMsg(backend);
                 ZFrame address = msg.unwrap();
                 String id = new String(address.getData(), ZMQ.CHARSET);
@@ -112,11 +114,15 @@ public class Proxi {
                 if (commandType == ParseUtils.CommandType.CONNECT) {
                     Integer[] range = ParseUtils.getKeyValue(command);
 
+                    System.out.println("new server added to cache list");
                     cacheServers.add(new CacheLine(
                             id, address, range[0], range[1], System.currentTimeMillis()
                     ));
                 }
 
+                if (commandType == ParseUtils.CommandType.OK) {
+                    msg.send(frontend);
+                }
                 if (commandType == ParseUtils.CommandType.NOTIFY) {
                     updateHeartbeat(id);
                 }
