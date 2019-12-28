@@ -1,4 +1,5 @@
 import org.zeromq.SocketType;
+import org.zeromq.ZFrame;
 import org.zeromq.ZMQ;
 import org.zeromq.ZMsg;
 
@@ -19,7 +20,7 @@ public class Proxi {
                 continue;
             }
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
-                cacheServer.getAddress().send(backend)
+                cacheServer.getAddress().send(backend, ZFrame.REUSE + ZFrame.MORE);
                 break;
             }
         }
