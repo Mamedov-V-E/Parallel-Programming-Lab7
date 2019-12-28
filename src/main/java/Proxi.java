@@ -1,5 +1,6 @@
 import org.zeromq.SocketType;
 import org.zeromq.ZMQ;
+import org.zeromq.ZMsg;
 
 import java.util.ArrayList;
 
@@ -25,7 +26,7 @@ public class Proxi {
             items.poll(HEARTBEAT_TIMEOUT);
 
             if (items.pollin(0)) {
-                
+                ZMsg msg = ZMsg.recvMsg(frontend);
             }
         }
     }
