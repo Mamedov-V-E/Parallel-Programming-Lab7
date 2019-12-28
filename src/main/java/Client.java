@@ -18,24 +18,24 @@ public class Client {
 
     private static void ExecuteCommand(String commandLine) {
         if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET) {
-            int id = ParseUtils.getKey(commandLine);
+            Integer id = ParseUtils.getKey(commandLine);
             sendGetRequest(id);
         }
         else if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
             Pair<Integer, Integer> pair = ParseUtils.getKeyValue(commandLine);
-            int id = pair.getKey();
-            int value = pair.getValue();
+            Integer id = pair.getKey();
+            Integer value = pair.getValue();
             sendPutRequest(id, value);
         } else {
             System.out.println("invalid command");
         }
     }
 
-    private static void sendGetRequest(int id) {
+    private static void sendGetRequest(Integer id) {
 
     }
 
-    private static void sendPutRequest(int id, int value) {
+    private static void sendPutRequest(Integer id, Integer value) {
 
     }
 }

@@ -45,7 +45,7 @@ public class Cache {
                     Integer value = cache.get(id);
                     String response = (value == null) ? "null" : value.toString();
 
-
+                    msg.getLast().reset();
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {

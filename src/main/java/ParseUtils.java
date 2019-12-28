@@ -12,6 +12,7 @@ public class ParseUtils {
         GET,
         PUT,
         RUN_CACHE,
+        RETURN_VALUE,
         INVALID
     }
 
@@ -28,7 +29,7 @@ public class ParseUtils {
         return CommandType.INVALID;
     }
 
-    public static String buildConnectRequest (String port, int minKey, int maxKey) {
+    public static String buildConnectRequest (String port, Integer minKey, Integer maxKey) {
         return "CONNECT " + port + " " + minKey + " " + maxKey;
     }
 
@@ -44,5 +45,9 @@ public class ParseUtils {
     public static Integer getKey (String getCommand) {
         String[] words = getCommand.split(DELIMITER);
         return Integer.parseInt(words[1]);
+    }
+
+    public static String buildReturnValueResponse (Integer value) {
+        return "RETURN_VALUE " + value;
     }
 }
