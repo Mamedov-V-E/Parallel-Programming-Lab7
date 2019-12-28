@@ -117,7 +117,9 @@ public class Proxi {
                 if (commandType == ParseUtils.CommandType.NOTIFY) {
                     updateHeartbeat(id);
                 }
-                if (commandType == ParseUtils.CommandType.RETURN_VALUE);
+                if (commandType == ParseUtils.CommandType.RETURN_VALUE) {
+                    msg.send(frontend);
+                }
             }
 
         }
