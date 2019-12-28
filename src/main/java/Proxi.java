@@ -1,3 +1,4 @@
+import com.sun.media.sound.SF2Region;
 import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZFrame;
@@ -82,6 +83,10 @@ public class Proxi {
                     Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
                     isIdValid = sendGetRequest(backend, pair.getKey(), msg);
 
+                    if (!isIdValid) {
+                        msg.getLast().reset("id is out of cached range");
+                        msg.send(frontend);
+                    }
                 }
             }
 
