@@ -23,6 +23,7 @@ public class Client {
             sendGetRequest(id);
         }
         else if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
+
             int id = Integer.parseInt(words[1]);
             int value = Integer.parseInt(words[2]);
             sendPutRequest(id, value);
