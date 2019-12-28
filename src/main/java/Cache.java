@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class Cache {
     private static void sendNotifyRequest (ZMQ.Socket socket, String port) {
-        socket.send(ParseUtils.buildNotifyRequest(port, System.currentTimeMillis()));
+        socket.send(ParseUtils.buildNotifyRequest();
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
@@ -33,6 +33,7 @@ public class Cache {
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CLIENT_ROUTER_ADDRES);
 
+        sendConnectRequest();
         Long nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
 
         while (!Thread.currentThread().isInterrupted()) {
@@ -60,7 +61,7 @@ public class Cache {
 
             if (System.currentTimeMillis() >= nextHearbeatTime) {
                 nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
-                dealer.send(ParseUtils.buildNotifyRequest());
+                sendNotifyRequest();
             }
         }
 
