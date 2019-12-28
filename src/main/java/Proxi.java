@@ -1,3 +1,4 @@
+import javafx.util.Pair;
 import org.zeromq.SocketType;
 import org.zeromq.ZFrame;
 import org.zeromq.ZMQ;
@@ -74,6 +75,11 @@ public class Proxi {
                         msg.getLast().reset("id is out of cached range");
                         msg.send(frontend);
                     }
+                }
+
+                if (commandType == ParseUtils.CommandType.PUT) {
+                    Pair<Integer, Integer> pair = ParseUtils.getKeyValue(command);
+                    
                 }
             }
 
