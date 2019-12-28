@@ -39,6 +39,6 @@ public class ParseUtils {
     public static Pair<Integer, Integer> getKeyValue(String putCommand) {
         String[] words = putCommand.split(DELIMITER);
 
-        return new Pair<>(Integer.parseInt(words[0]), Integer.parseInt(words[1]));
+        return new Pair<>(Integer.parseInt(words[1]), Integer.parseInt(words[2]));
     }
 }

@@ -41,7 +41,7 @@ public class Cache {
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
 
                 if (commandType == ParseUtils.CommandType.GET) {
-                    
+
                 }
 
                 if (commandType == ParseUtils.CommandType.PUT) {
