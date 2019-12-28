@@ -12,8 +12,8 @@ public class Cache {
         socket.send(ParseUtils.buildNotifyRequest());
     }
 
-    private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
-        socket.send(ParseUtils.buildConnectRequest(port, minKey, maxKey));
+    private static void sendConnectRequest (ZMQ.Socket socket, int minKey, int maxKey) {
+        socket.send(ParseUtils.buildConnectRequest(minKey, maxKey));
     }
 
     public static void main(String[] args) {
@@ -32,7 +32,7 @@ public class Cache {
         ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CACHE_ROUTER_ADDRES);
 
-        sendConnectRequest(dealer, port, minKey, maxKey);
+        sendConnectRequest(dealer, minKey, maxKey);
         Long nextHearbeatTime = System.currentTimeMillis() + Proxi.HEARTBEAT_TIMEOUT;
 
         while (!Thread.currentThread().isInterrupted()) {
