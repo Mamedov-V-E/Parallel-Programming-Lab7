@@ -79,6 +79,7 @@ public class Proxi {
                 boolean isIdValid;
 
                 if (commandType == ParseUtils.CommandType.GET) {
+                    System.out.println("got GET command!");
                     Integer id = ParseUtils.getKey(command);
                     isIdValid = sendGetRequest(backend, id, msg);
 
