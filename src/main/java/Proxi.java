@@ -11,7 +11,7 @@ public class Proxi {
 
     private ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
-    private void sendGetRequest (Integer id) {
+    private void sendGetRequest (ZMQ.Socket backend, Integer id) {
         for (int i = 0; i < cacheServers.size(); i++) {
             CacheLine cacheServer = cacheServers.get(i);
             if (cacheServer.isDead()) {
@@ -19,7 +19,7 @@ public class Proxi {
                 continue;
             }
             if (id >= cacheServer.getMinKey() && id <= cacheServer.getMaxKey()) {
-
+                
                 break;
             }
         }
