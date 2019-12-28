@@ -14,30 +14,16 @@ public class Client {
 
         Scanner sc = new java.util.Scanner(System.in);
         while (!Thread.currentThread().isInterrupted()) {
-            ExecuteCommand(sc.nextLine());
+            ExecuteCommand(requester, sc.nextLine());
         }
     }
 
-    private static void ExecuteCommand(String commandLine) {
-        if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET) {
-            Integer id = ParseUtils.getKey(commandLine);
-            sendGetRequest(id);
-        }
-        else if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
-            Pair<Integer, Integer> pair = ParseUtils.getKeyValue(commandLine);
-            Integer id = pair.getKey();
-            Integer value = pair.getValue();
-            sendPutRequest(id, value);
+    private static void ExecuteCommand(ZMQ.Socket requester, String commandLine) {
+        if (ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.GET ||
+                ParseUtils.getCommandType(commandLine) == ParseUtils.CommandType.PUT) {
+            requester.send(commandLine);
         } else {
             System.out.println("invalid command");
         }
-    }
-
-    private static void sendGetRequest(ZMQ.Socket socket, Integer id) {
-        socket.send()
-    }
-
-    private static void sendPutRequest(Integer id, Integer value) {
-
     }
 }
