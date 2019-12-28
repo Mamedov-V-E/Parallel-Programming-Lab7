@@ -6,6 +6,6 @@ public class Proxi {
     public static final int HEARTBEAT_TIMEOUT = 5000;
 
     public static void main () {
-        ArrayList
+        ArrayList<CacheLine> cacheServers = new ArrayList<>();
     }
 }
