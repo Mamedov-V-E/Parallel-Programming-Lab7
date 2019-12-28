@@ -8,8 +8,8 @@ import java.util.HashSet;
 
 
 public class Cache {
-    private static void sendNotifyRequest (ZMQ.Socket socket, String port) {
-        socket.send(ParseUtils.buildNotifyRequest();
+    private static void sendNotifyRequest (ZMQ.Socket socket) {
+        socket.send(ParseUtils.buildNotifyRequest());
     }
 
     private static void sendConnectRequest (ZMQ.Socket socket, String port, int minKey, int maxKey) {
