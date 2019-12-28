@@ -62,6 +62,7 @@ public class Proxi {
 
                 if (commandType == ParseUtils.CommandType.GET) {
                     Integer id = ParseUtils.getKey(command);
+                     
 
                 }
             }
