@@ -72,8 +72,9 @@ public class Proxi {
         while (!Thread.currentThread().isInterrupted()) {
             items.poll(HEARTBEAT_TIMEOUT);
 
-            System
+            System.out.println("outside if");
             if (items.pollin(0)) {
+                System.out.println("inside if");
                 ZMsg msg = ZMsg.recvMsg(frontend);
                 String command = new String(msg.getLast().getData(), ZMQ.CHARSET);
                 ParseUtils.CommandType commandType = ParseUtils.getCommandType(command);
