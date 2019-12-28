@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 import java.util.regex.Pattern;
 
 public class ParseUtils {
