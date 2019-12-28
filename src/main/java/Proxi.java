@@ -12,10 +12,15 @@ public class Proxi {
     public static final String CACHE_ROUTER_ADDRES = "tcp//localhost:8081";
     public static final int HEARTBEAT_TIMEOUT = 5000;
 
-    private static ArrayList<CacheLine> cacheServers = new ArrayList<>();
+    private static final ArrayList<CacheLine> cacheServers = new ArrayList<>();
 
     private static void updateHeartbeat(String id) {
-
+        for (int i = 0; i < cacheServers.size(); i++) {
+            CacheLine cacheServer = cacheServers.get(i);
+            if (cacheServer.getId().equals(id)) {
+                cacheServer.setHertbeatTime(System.currentTimeMillis());
+            }
+        }
     }
 
     private static boolean sendGetRequest (ZMQ.Socket backend, Integer id, ZMsg msg) {
@@ -110,8 +115,9 @@ public class Proxi {
                 }
 
                 if (commandType == ParseUtils.CommandType.NOTIFY) {
-
+                    updateHeartbeat(id);
                 }
+                if (commandType == ParseUtils.CommandType.RETURN_VALUE);
             }
 
         }
