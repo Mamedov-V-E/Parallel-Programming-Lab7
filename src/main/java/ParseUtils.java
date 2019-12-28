@@ -44,7 +44,7 @@ public class ParseUtils {
     }
 
     public static String buildConnectRequest (String port, Integer minKey, Integer maxKey) {
-        return "CONNECT";
+        return "CONNECT " + port + " " + minKey + " " + maxKey;
     }
 
     public static String buildNotifyRequest () {
