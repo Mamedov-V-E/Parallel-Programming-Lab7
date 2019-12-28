@@ -28,7 +28,7 @@ public class Cache {
         Integer maxKey = Integer.parseInt(args[1]);
 
         ZMQ.Context context = ZMQ.context(1);
-        ZMQ.Socket dealer = context.socket(SocketType.DEALER);
+//        ZMQ.Socket dealer = context.socket(SocketType.DEALER);
         dealer.connect(Proxi.CACHE_ROUTER_ADDRESS);
 
         System.out.println("cache server started");
